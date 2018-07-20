@@ -7,7 +7,7 @@
     "test": "jest",
     "build": "webpack",
     "start": "nodemon ./server/server.js",
-    "eslint": "./node_modules/.bin/eslint"
+    "lint": "./node_modules/.bin/eslint"
   },
   "keywords": [],
   "author": "",
