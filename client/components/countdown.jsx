@@ -2,20 +2,20 @@ import React from 'react';
 
 const countStyle = {
   borderStyle: 'solid',
-  borderWidth: '1px'
+  borderWidth: '1px',
 };
 
 export default class CountDown extends React.Component {
-  constructor () {
+  constructor() {
     super();
 
     this.state = {
       time: this.secondsToTime(1860),
-      seconds: 1860
+      seconds: 1860,
     };
 
     this.timer = 0;
-     this.countDown = this.countDown.bind(this);
+    this.countDown = this.countDown.bind(this);
   }
 
   secondsToTime(secs) {
