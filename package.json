@@ -7,8 +7,7 @@
     "test": "jest",
     "build": "webpack",
     "start": "nodemon ./server/server.js",
-    "lint": "./node_modules/.bin/eslint",
-    "test": "jest"
+    "lint": "./node_modules/.bin/eslint"
   },
   "keywords": [],
   "author": "",
@@ -31,6 +30,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "gulp": "^3.9.1",
     "jest": "^22.4.4"
   }
 }
