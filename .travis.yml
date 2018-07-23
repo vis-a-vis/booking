@@ -1,4 +1,6 @@
+before_script:
+  - npm install -g gulp-cli
 language: node_js
 node_js:
-  - "iojs"
-  - "7"
+  - "stable"
+script: gult travis
