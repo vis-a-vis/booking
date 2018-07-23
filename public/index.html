@@ -2,17 +2,18 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>countdown</title>
+  <title>Booking</title>
 </head>
 <body>
-  <div id="countdown"></div>
+  <div id="app"></div>
   <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script type="text/javascript" src="bundle.js"></script>
   <script src="http://localhost:3002/app.js"></script>
   <script>
     ReactDOM.render(
-      React.createElement(CountDown),
-      document.getElementById('countdown')
+      React.createElement(App),
+      document.getElementById('app')
     );
   </script>
 </body>
