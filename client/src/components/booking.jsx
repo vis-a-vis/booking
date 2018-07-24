@@ -16,7 +16,7 @@ class Booking extends React.Component {
 
   render() {
     return (
-      <div className="card-panel teal lighten-2">This is a card panel with a teal lighten-2 class
+      <div className="card-panel">This is a card panel with a teal lighten-2 class
         <form action="#">
           <p>
             <label>
@@ -55,6 +55,13 @@ class Booking extends React.Component {
             </label>
           </p>
         </form>
+
+        <button className="waves-effect waves-dark btn btn-large red white-text">
+         Request to Book
+         </button>
+         <i className="material-icons right">cloud</i>
+         <a className="waves-effect waves-dark btn"><i className="material-icons left">cloud</i>button</a>
+
       </div>
     )
   }
