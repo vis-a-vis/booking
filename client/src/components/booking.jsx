@@ -8,7 +8,7 @@ class Booking extends React.Component {
     super(props);
     this.state = {
       view: 'init',
-      currentListing: {},
+      currentListing: [],
       renderedStars: '',
     };
     this.getData = this.getData.bind(this);
@@ -21,7 +21,7 @@ class Booking extends React.Component {
   }
 
   getData() {
-    this.setStat
+    this.setState({ currentListing: SampleData }, () => console.log(this.state.currentListing));
   }
 
   renderStars() {
