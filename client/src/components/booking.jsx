@@ -1,67 +1,63 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+const SampleData = require('../sampleData.js')
+
 
 class Booking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: 'init',
+      currentListing: {},
+      renderedStars: '',
     };
-    this.method = this.method.bind(this);
+    this.getData = this.getData.bind(this);
+    this.renderStars = this.renderStars.bind(this);
   }
 
-  method(e) {
-    console.log(e);
+  componentDidMount() {
+    this.getData();
+    this.renderStars();
+  }
+
+  getData() {
+    this.setStat
+  }
+
+  renderStars() {
+    const { reviewStars } = this.state;
+    let result = '';
+    for (let i = 0; i < reviewStars; i += 1) {
+      result += '★';
+    }
+    return result;
   }
 
   render() {
+    const {view, price, reviewStars, reviewCount} = this.state;
     return (
-      <div className="card-panel">This is a card panel with a teal lighten-2 class
-        <form action="#">
-          <p>
-            <label>
-              <input type="checkbox" />
-              <span>Red</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" checked="checked" />
-              <span>Yellow</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" className="filled-in" defaultChecked="checked" />
-              <span>Filled in</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input id="indeterminate-checkbox" type="checkbox" />
-              <span>Indeterminate Style</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" checked="checked" disabled="disabled" />
-              <span>Green</span>
-            </label>
-          </p>
-          <p>
-            <label>
-              <input type="checkbox" disabled="disabled" />
-              <span>Brown</span>
-            </label>
-          </p>
-        </form>
+      <div>
+        <div className="container">
+          <div className="priceSummary">
+            <span className="price">
+              ${price} per night
+            </span>
+          <div className="reviewSummary">
+            <button className="review">
+              <span>{reviewStars}</span>
+              <span>{this.renderStars()}</span>
+            </button>
+          </div>
+            <div>line</div>
+          </div>
 
-        <button className="waves-effect waves-dark btn btn-large red white-text">
-         Request to Book
-         </button>
-         <i className="material-icons right">cloud</i>
-         <a className="waves-effect waves-dark btn"><i className="material-icons left">cloud</i>button</a>
 
+
+
+          <button>
+            Request to Book
+          </button>
+        </div>
       </div>
     )
   }

@@ -1,5 +1,8 @@
-.card-panel {
+.container {
   width: 30rem;
-  height: 40rem;
-  margin: 2rem;
+  height: 35rem;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: grey;
+
 }
