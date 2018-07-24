@@ -3,6 +3,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
+const db = require('../db/dataGenerator.js');
 const app = express();
 const port = process.env.PORT || 3002;
 
@@ -14,7 +15,11 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 // GET METHODS///////////////////////////////////////////////////////
 
-app.get('/rooms/:roomId', (req, res) => {});
+app.get('/rooms/:roomId', (req, res) => {
+  const { roomId } = req.params;
+  //temporarily return dummy data
+  res.send(db[roomId - 1]);
+});
 
 // APP METHODS///////////////////////////////////////////////////////
 
