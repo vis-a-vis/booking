@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import dataProcessor from '../dataProcessor.js';
 const moment = require('moment');
 
-
 // CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
 
 class Booking extends React.Component {
@@ -46,6 +45,7 @@ class Booking extends React.Component {
         // console.log(response.data);
         this.setState(
           { listing: response.data });
+
       }
     });
   }
@@ -54,6 +54,7 @@ class Booking extends React.Component {
     const { listing } = this.state;
     let result = '';
     for (let i = 0; i < listing.reviewStars; i += 1) {
+
       result += '★';
     }
     this.setState({ stars: result });
