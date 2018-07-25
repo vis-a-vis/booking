@@ -1,5 +1,14 @@
 const listings = [
   {
+    listingId: 0,
+    price: 195,
+    minStay: 1,
+    lastUpdate: new Date('April 12, 1997'),
+    bookings: [],
+    reviewStars: 1,
+    reviewCount: 2034,
+  },
+  {
     listingId: 1,
     price: 90,
     minStay: 1,
@@ -14,7 +23,7 @@ const listings = [
   },
   {
     listingId: 2,
-    price: 134,
+    price: 135,
     minStay: 1,
     lastUpdate: new Date('December 17, 2017'),
     bookings: [
