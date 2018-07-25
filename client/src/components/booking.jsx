@@ -1,14 +1,17 @@
+// IMPORT/////////////////////////////////////////////////////////////
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-const SampleData = require('../sampleData.js')
+const dataProcessor = require('../dataProcessor.js');
 
+// CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
 
 class Booking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       view: 'init',
-      currentListing: [],
+      listingData: [],
       renderedStars: '',
     };
     this.getData = this.getData.bind(this);
@@ -21,7 +24,9 @@ class Booking extends React.Component {
   }
 
   getData() {
-    this.setState({ currentListing: SampleData }, () => console.log(this.state.currentListing));
+    console.log(window.location.href);
+    // dataProcessor.getData('', ())
+    // this.setState({ currentListing: SampleData }, () => console.log(this.state.currentListing));
   }
 
   renderStars() {
