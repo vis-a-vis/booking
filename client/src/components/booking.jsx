@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-const dataProcessor = require('../dataProcessor.js');
+import dataProcessor from '../dataProcessor.js';
 
 // CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
 
@@ -11,28 +11,33 @@ class Booking extends React.Component {
     super(props);
     this.state = {
       view: 'init',
-      listingData: [],
+      listingData: {},
       renderedStars: '',
     };
-    this.getData = this.getData.bind(this);
+    this.retreiveData = this.retreiveData.bind(this);
     this.renderStars = this.renderStars.bind(this);
   }
 
   componentDidMount() {
-    this.getData();
+    this.retreiveData();
     this.renderStars();
   }
 
-  getData() {
-    console.log(window.location.href);
-    // dataProcessor.getData('', ())
-    // this.setState({ currentListing: SampleData }, () => console.log(this.state.currentListing));
+  retreiveData() {
+    dataProcessor.getData(window.location.href, (error, response) => {
+      if (error) {
+        console.error(error);
+      } else {
+        console.log(response.data);
+        // this.setState({ listingData: response.data }, () => console.log(this.state.currentListing));
+      }
+    });
   }
 
   renderStars() {
-    const { reviewStars } = this.state;
+    const { listingData } = this.state;
     let result = '';
-    for (let i = 0; i < reviewStars; i += 1) {
+    for (let i = 0; i < listingData.reviewStars; i += 1) {
       result += '★';
     }
     return result;
