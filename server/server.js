@@ -17,9 +17,12 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/rooms/:roomId', (req, res) => {
   const { roomId } = req.params;
+  // console.log('room id:', roomId);
+  // console.log(db);
   //temporarily return dummy data
-  res.send(db[roomId - 1]);
+  res.send(db.listings[roomId - 1]);
 });
+
 
 // APP METHODS///////////////////////////////////////////////////////
 
