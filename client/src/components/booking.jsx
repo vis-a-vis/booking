@@ -11,15 +11,27 @@ class Booking extends React.Component {
     super(props);
     this.state = {
       view: 'init',
-      listingData: {},
-      renderedStars: '',
+      listing: {
+        listingId: 1,
+        price: 90,
+        minStay: 1,
+        lastUpdate: new Date('July 17, 2018'),
+        bookings: [
+          [new Date('July 4, 2018'), new Date('July 8, 2018')],
+          [new Date('July 19, 2018'), new Date('July 22, 2018')],
+          [new Date('July 29, 2018'), new Date('August 7, 2018')],
+        ],
+        reviewStars: 4,
+        reviewCount: 18,
+      },
+      stars: '',
     };
     this.retreiveData = this.retreiveData.bind(this);
     this.renderStars = this.renderStars.bind(this);
   }
 
   componentDidMount() {
-    this.retreiveData();
+    // this.retreiveData();
     this.renderStars();
   }
 
@@ -28,45 +40,47 @@ class Booking extends React.Component {
       if (error) {
         console.error(error);
       } else {
-        console.log(response.data);
-        // this.setState({ listingData: response.data }, () => console.log(this.state.currentListing));
+        // console.log(response.data);
+        this.setState(
+          { listing: response.data });
       }
     });
   }
 
   renderStars() {
-    const { listingData } = this.state;
+    const { listing } = this.state;
     let result = '';
-    for (let i = 0; i < listingData.reviewStars; i += 1) {
+    for (let i = 0; i < listing.reviewStars; i += 1) {
       result += '★';
     }
-    return result;
+    this.setState({ stars: result });
   }
 
   render() {
-    const {view, price, reviewStars, reviewCount} = this.state;
+    const { listing, stars } = this.state;
     return (
-      <div>
-        <div className="container">
+      <div className="container1">
+        <div className="container2">
           <div className="priceSummary">
-            <span className="price">
-              ${price} per night
-            </span>
-          <div className="reviewSummary">
-            <button className="review">
-              <span>{reviewStars}</span>
-              <span>{this.renderStars()}</span>
+            <div>
+              <span className="price">
+                {`${listing.price} per night`}
+              </span>
+            </div>
+            <div className="reviewSummary">
+              <button className="moveToReview" type="button">
+                <span>{`${stars} ${listing.reviewCount}`}</span>
+              </button>
+            </div>
+          </div>
+
+          <hr/>
+
+          <div className="bookSummary">
+            <button type="button">
+              Request to Book
             </button>
           </div>
-            <div>line</div>
-          </div>
-
-
-
-
-          <button>
-            Request to Book
-          </button>
         </div>
       </div>
     )
