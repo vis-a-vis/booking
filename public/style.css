@@ -1,4 +1,4 @@
-.container1 {
+.outerContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,11 +9,20 @@
   outline-color: grey;
 }
 
-.container2 {
+.innerContainer {
   width: 20rem;
   height: 25rem;
-/*  outline-style: solid;
-  outline-width: 1px;
-  outline-color: grey;  position: fixed;*/
+}
 
+.datesContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: auto;
+  height: 2rem;
+
+  outline-style: solid;
+  outline-width: .5px;
+  outline-color: lightgrey;
 }

@@ -3,6 +3,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import dataProcessor from '../dataProcessor.js';
+const moment = require('moment');
+
 
 // CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
 
@@ -25,6 +27,7 @@ class Booking extends React.Component {
         reviewCount: 18,
       },
       stars: '',
+      today: moment().calendar('L'),
     };
     this.retreiveData = this.retreiveData.bind(this);
     this.renderStars = this.renderStars.bind(this);
@@ -57,10 +60,10 @@ class Booking extends React.Component {
   }
 
   render() {
-    const { listing, stars } = this.state;
+    const { listing, stars, today } = this.state;
     return (
-      <div className="container1">
-        <div className="container2">
+      <div className="outerContainer">
+        <div className="innerContainer">
           <div className="priceSummary">
             <div>
               <span className="price">
@@ -75,6 +78,30 @@ class Booking extends React.Component {
           </div>
 
           <hr/>
+
+          <div>
+            <span>
+              Dates
+            </span>
+            <div className="datesContainer">
+              <button type="button" className="checkInOutBtn">
+                {today}
+              </button>
+              <span>  ---->  </span>
+              <button type="button" className="checkInOutBtn">
+                {today}
+              </button>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
 
           <div className="bookSummary">
             <button type="button">
