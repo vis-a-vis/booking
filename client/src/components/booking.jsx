@@ -1,8 +1,7 @@
 // IMPORT/////////////////////////////////////////////////////////////
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import dataProcessor from '../dataProcessor.js';
+import dataProcessor from '../dataProcessor';
 const moment = require('moment');
 
 // CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
@@ -45,7 +44,6 @@ class Booking extends React.Component {
         // console.log(response.data);
         this.setState(
           { listing: response.data });
-
       }
     });
   }
@@ -65,10 +63,14 @@ class Booking extends React.Component {
     return (
       <div className="outerContainer">
         <div className="innerContainer">
+
           <div className="priceSummary">
             <div>
-              <span className="price">
-                {`${listing.price} per night`}
+              <span className="priceText">
+                {`$${listing.price} `}
+              </span>
+              <span className="text1">
+                per night
               </span>
             </div>
             <div className="reviewSummary">
@@ -81,28 +83,39 @@ class Booking extends React.Component {
           <hr/>
 
           <div>
-            <span>
+            <span className="text1">
               Dates
             </span>
             <div className="datesContainer">
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
-              <span>  ---->  </span>
+              <span> {"  ---->  "} </span>
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
             </div>
           </div>
 
+          <div>
+            <span className="text1">
+              Guests
+            </span>
+            <select className="datesContainer">
+              <option value=""></option>
 
 
+              <button type="button" className="checkInOutBtn">
+                {today}
+              </button>
+            <span>  ---->  </span>
+              <button type="button" className="checkInOutBtn">
+                {today}
+              </button>
 
 
-
-
-
-
+            </select>
+          </div>
 
           <div className="bookSummary">
             <button type="button">
