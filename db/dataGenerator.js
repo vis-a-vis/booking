@@ -36,4 +36,7 @@ const listings = [
   },
 ];
 
-export default listings;
+module.exports = {
+  listings: listings,
+  test: function() {console.log('JLAFJEKWF')},
+}
