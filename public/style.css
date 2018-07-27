@@ -26,3 +26,39 @@
   outline-width: .5px;
   outline-color: lightgrey;
 }
+
+.bookSummary {
+  width: auto;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*////////// BUTTON DESIGN //////////*/
+.moveToReview {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.checkInOutBtn {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+/*////////// TEXT DESIGN //////////*/
+
+.priceText {
+  font-size: 1.5em;
+}
+
+.text1 {
+  font-size: .8em;
+}
+
+
+
+
+
