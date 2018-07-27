@@ -35,6 +35,23 @@
   align-items: center;
 }
 
+.guestDropdownMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: grey;
+}
+
+.guestDropdownSub {
+  width: auto;
+  height: 2rem;
+}
+
 /*////////// BUTTON DESIGN //////////*/
 .moveToReview {
   padding: 0;

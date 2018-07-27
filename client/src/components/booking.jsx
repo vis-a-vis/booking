@@ -97,25 +97,36 @@ class Booking extends React.Component {
             </div>
           </div>
 
-          <div>
-            <span className="text1">
-              Guests
-            </span>
-            <select className="datesContainer">
-              <option value=""></option>
 
+          <div className="guestDropdownMain pure-menu pure-menu-horizontal">
 
-              <button type="button" className="checkInOutBtn">
-                {today}
-              </button>
-            <span>  ---->  </span>
-              <button type="button" className="checkInOutBtn">
-                {today}
-              </button>
+                  <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                      <a href="#" id="menuLink1" className="pure-menu-link">Interactive Guest Count</a>
+                      <ul className="pure-menu-children">
+                          <li className="pure-menu-item">
+                            <a href="#" className="pure-menu-link">Adults</a>
+                          </li>
+                          <li className="pure-menu-item">
+                            <a href="#" className="pure-menu-link">Children</a>
+                          </li>
+                          <li className="pure-menu-item">
+                            <a href="#" className="pure-menu-link">Infants</a>
+                          </li>
+                      </ul>
+                  </li>
 
-
-            </select>
           </div>
+
+
+
+
+
+
+
+
+
+
+
 
           <div className="bookSummary">
             <button type="button">
