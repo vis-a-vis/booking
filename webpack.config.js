@@ -14,7 +14,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'env']
+          presets: ['react', 'es2015', 'env'],
         },
       },
     ],
@@ -22,5 +22,8 @@ module.exports = {
   output: {
     path: DIST_DIR,
     filename: 'app.js',
-  }
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
 };
