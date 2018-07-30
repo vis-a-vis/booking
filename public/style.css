@@ -26,3 +26,73 @@
   outline-width: .5px;
   outline-color: lightgrey;
 }
+
+.bookSummary {
+  width: auto;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.guestDropdownMain {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  outline-style: solid;
+  outline-width: 1px;
+  outline-color: grey;
+}
+
+.guestDropdownSub {
+  width: auto;
+  height: 2rem;
+}
+
+/*////////// BUTTON DESIGN //////////*/
+.moveToReview {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.checkInOutBtn {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+/*////////// TEXT DESIGN //////////*/
+
+.priceText {
+  font-size: 1.5em;
+}
+
+.text1 {
+  font-size: .8em;
+}
+
+/*////////// GUEST NAV //////////*/
+
+nav {
+  width: 100%;
+  height: 2rem;
+  background-color: #fff;
+}
+
+nav p {
+  font-family: arial;
+  color #222;
+  font-size: 1rem;
+}
+
+nav ul {
+}
+
+nav ul li {
+  list-style: none;
+}
+

@@ -1,10 +1,9 @@
 // IMPORT/////////////////////////////////////////////////////////////
 
 import React from 'react';
-import ReactDOM from 'react-dom';
-import dataProcessor from '../dataProcessor.js';
+import dataProcessor from '../dataProcessor';
+import GuestComponent from './guestComponent';
 const moment = require('moment');
-
 // CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
 
 class Booking extends React.Component {
@@ -22,7 +21,7 @@ class Booking extends React.Component {
           [new Date('July 19, 2018'), new Date('July 22, 2018')],
           [new Date('July 29, 2018'), new Date('August 7, 2018')],
         ],
-        reviewStars: 4,
+        reviewStars: 1,
         reviewCount: 18,
       },
       stars: '',
@@ -45,7 +44,6 @@ class Booking extends React.Component {
         // console.log(response.data);
         this.setState(
           { listing: response.data });
-
       }
     });
   }
@@ -65,10 +63,14 @@ class Booking extends React.Component {
     return (
       <div className="outerContainer">
         <div className="innerContainer">
+
           <div className="priceSummary">
             <div>
-              <span className="price">
-                {`${listing.price} per night`}
+              <span className="priceText">
+                {`$${listing.price} `}
+              </span>
+              <span className="text1">
+                per night
               </span>
             </div>
             <div className="reviewSummary">
@@ -79,39 +81,36 @@ class Booking extends React.Component {
           </div>
 
           <hr/>
+          <hr/>
 
           <div>
-            <span>
+            <span className="text1">
               Dates
             </span>
             <div className="datesContainer">
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
-              <span>  ---->  </span>
+              <span> {"  ---->  "} </span>
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
             </div>
           </div>
 
-
-
-
-
-
-
-
-
-
           <div className="bookSummary">
             <button type="button">
               Request to Book
             </button>
           </div>
+
+          <hr/>
+          <GuestComponent />
+          <hr/>
+
         </div>
       </div>
-    )
+    );
   }
 }
 
