@@ -2,8 +2,8 @@
 
 import React from 'react';
 import dataProcessor from '../dataProcessor';
+import GuestComponent from './guestComponent';
 const moment = require('moment');
-
 // CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
 
 class Booking extends React.Component {
@@ -21,7 +21,7 @@ class Booking extends React.Component {
           [new Date('July 19, 2018'), new Date('July 22, 2018')],
           [new Date('July 29, 2018'), new Date('August 7, 2018')],
         ],
-        reviewStars: 4,
+        reviewStars: 1,
         reviewCount: 18,
       },
       stars: '',
@@ -81,6 +81,7 @@ class Booking extends React.Component {
           </div>
 
           <hr/>
+          <hr/>
 
           <div>
             <span className="text1">
@@ -97,45 +98,19 @@ class Booking extends React.Component {
             </div>
           </div>
 
-
-          <div className="guestDropdownMain pure-menu pure-menu-horizontal">
-
-                  <li className="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                      <a href="#" id="menuLink1" className="pure-menu-link">Interactive Guest Count</a>
-                      <ul className="pure-menu-children">
-                          <li className="pure-menu-item">
-                            <a href="#" className="pure-menu-link">Adults</a>
-                          </li>
-                          <li className="pure-menu-item">
-                            <a href="#" className="pure-menu-link">Children</a>
-                          </li>
-                          <li className="pure-menu-item">
-                            <a href="#" className="pure-menu-link">Infants</a>
-                          </li>
-                      </ul>
-                  </li>
-
-          </div>
-
-
-
-
-
-
-
-
-
-
-
-
           <div className="bookSummary">
             <button type="button">
               Request to Book
             </button>
           </div>
+
+          <hr/>
+          <GuestComponent />
+          <hr/>
+
         </div>
       </div>
-    )
+    );
   }
 }
 
