@@ -39,7 +39,7 @@ const hundredListings = [
   },
 ];
 
-for (let i = 2; i <= 3; i += 1) {
+for (let i = 2; i <= 100; i += 1) {
   const randNumArrays = [];
   const addNums = () => {
     for (let j = 0; j < 6; j += 1) {
