@@ -13,11 +13,3 @@ const findListing = (listingId, callback) => {
 module.exports = {
   findListing: findListing,
 };
-
-// findListing(1, (err, data) => {
-//   if (err) {
-//     console.log('error');
-//   } else {
-//     console.log(data);
-//   }
-// });

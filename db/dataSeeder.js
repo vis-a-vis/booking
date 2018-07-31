@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const _ = require('underscore');
 const { listings } = require('./dataGenerator');
 
 mongoose.connect('mongodb://localhost:27017/listings', { useNewUrlParser: true });
@@ -42,12 +43,15 @@ const listingSchema = new mongoose.Schema({
   reviewCount: Number,
 });
 const Listing = mongoose.model('Listing', listingSchema);
-Listing.insertMany(listings)
-  .then(() => {
-    console.log('listings have been added to db');
-  })
-  .catch(() => {
-    console.log('error adding listings');
-  });
+
+_.once(() => {
+  Listing.insertMany(listings)
+    .then(() => {
+      console.log('listings have been added to db');
+    })
+    .catch(() => {
+      console.log('error adding listings');
+    });
+});
 
 module.exports = Listing;
