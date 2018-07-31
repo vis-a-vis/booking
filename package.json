@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "test1": "echo 'Error: no test specified' && exit 1",
-    "seed" : "node ./db/dataSeeder.js",
+    "seed": "node ./db/dataSeeder.js",
     "build": "webpack -d --watch",
     "start": "nodemon ./server/server.js",
     "lint": "./node_modules/.bin/eslint"
@@ -30,6 +30,7 @@
     "normalize.css": "^8.0.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "underscore": "^1.9.1",
     "webpack": "^3.11.0"
   },
   "devDependencies": {
