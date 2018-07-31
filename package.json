@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test1": "echo 'Error: no test specified' && exit 1",
+    "seed" : "node ./db/dataSeeder.js",
     "build": "webpack -d --watch",
     "start": "nodemon ./server/server.js",
     "lint": "./node_modules/.bin/eslint"
@@ -24,6 +25,7 @@
     "babel-preset-react": "^6.24.1",
     "express": "^4.16.2",
     "moment": "^2.22.2",
+    "mongoose": "^5.2.6",
     "morgan": "^1.9.0",
     "normalize.css": "^8.0.0",
     "react": "^16.2.0",
@@ -36,6 +38,7 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.10.0",
+    "faker": "^4.1.0",
     "gulp": "^3.9.1",
     "jest": "^22.4.4"
   }
