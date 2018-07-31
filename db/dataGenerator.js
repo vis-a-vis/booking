@@ -32,14 +32,14 @@ const hundredListings = [
       [new Date('2018-12-01'), new Date('2018-12-04')],
       [new Date('2018-12-09'), new Date('2018-12-14')],
       [new Date('2018-12-18'), new Date('2018-12-21')],
-      [new Date('2018-12-27'), new Date('2018-12-30')]
+      [new Date('2018-12-27'), new Date('2018-12-30')],
     ],
     reviewStars: 4,
     reviewCount: 346,
   },
 ];
 
-for (let i = 2 ; i <= 3; i += 1) {
+for (let i = 2; i <= 3; i += 1) {
   const randNumArrays = [];
   const addNums = () => {
     for (let j = 0; j < 6; j += 1) {
