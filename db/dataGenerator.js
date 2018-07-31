@@ -1,6 +1,44 @@
 const faker = require('faker');
 
-const hundredListings = [];
+const hundredListings = [
+  {
+    listingId: 1,
+    price: 90,
+    cleaningFee: 35,
+    minStay: 1,
+    maxGuests: 4,
+    lastUpdate: new Date('2018-05-12'),
+    bookings: [
+      [new Date('2018-07-01'), new Date('2018-07-04')],
+      [new Date('2018-07-09'), new Date('2018-07-14')],
+      [new Date('2018-07-18'), new Date('2018-07-21')],
+      [new Date('2018-07-27'), new Date('2018-07-30')],
+      [new Date('2018-08-03'), new Date('2018-08-05')],
+      [new Date('2018-08-07'), new Date('2018-08-10')],
+      [new Date('2018-08-18'), new Date('2018-08-25')],
+      [new Date('2018-08-27'), new Date('2018-08-30')],
+      [new Date('2018-09-01'), new Date('2018-09-04')],
+      [new Date('2018-09-09'), new Date('2018-09-14')],
+      [new Date('2018-09-18'), new Date('2018-09-21')],
+      [new Date('2018-09-27'), new Date('2018-09-30')],
+      [new Date('2018-10-01'), new Date('2018-10-04')],
+      [new Date('2018-10-09'), new Date('2018-10-14')],
+      [new Date('2018-10-18'), new Date('2018-10-21')],
+      [new Date('2018-10-27'), new Date('2018-10-30')],
+      [new Date('2018-11-01'), new Date('2018-11-04')],
+      [new Date('2018-11-09'), new Date('2018-11-14')],
+      [new Date('2018-11-18'), new Date('2018-11-21')],
+      [new Date('2018-11-27'), new Date('2018-11-30')],
+      [new Date('2018-12-01'), new Date('2018-12-04')],
+      [new Date('2018-12-09'), new Date('2018-12-14')],
+      [new Date('2018-12-18'), new Date('2018-12-21')],
+      [new Date('2018-12-27'), new Date('2018-12-30')]
+    ],
+    reviewStars: 4,
+    reviewCount: 346,
+  },
+];
+
 for (let i = 2 ; i <= 3; i += 1) {
   const randNumArrays = [];
   const addNums = () => {
@@ -60,9 +98,8 @@ for (let i = 2 ; i <= 3; i += 1) {
     reviewCount: faker.random.number(),
   };
   hundredListings.push(listingObj);
-};
+}
 
-console.log(hundredListings)
 module.exports = {
   listings: hundredListings,
 };
