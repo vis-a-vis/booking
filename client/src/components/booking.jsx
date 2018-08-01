@@ -30,7 +30,7 @@ class Booking extends React.Component {
       today: moment().calendar('LL'),
       stayCost: 0,
       extraGuestCost: 10,
-      guestCount: 0,
+      guestCount: 1,
       nightCount: 0,
     };
     this.retreiveData = this.retreiveData.bind(this);
@@ -109,7 +109,7 @@ class Booking extends React.Component {
 
   renderStars() {
     const { listing } = this.state;
-    const stars = new Array(listing.reviewStars).fill(null);
+    const stars = new Array(4).fill(null);
     return stars.map((item, index) => (<RenderStars key={index} />));
   }
 

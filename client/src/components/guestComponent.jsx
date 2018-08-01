@@ -6,7 +6,7 @@ class GuestDropdown extends React.Component {
     super(props);
     this.state = {
       open: false,
-      adults: 0,
+      adults: 1,
       children: 0,
       infants: 0,
     };
@@ -55,11 +55,16 @@ class GuestDropdown extends React.Component {
   }
 
   render() {
+    const { guestCount } = this.props;
     const { adults, children, infants } = this.state;
     return (
     <div>
-      <nav>
-        <p>guests</p>
+      <button type="button">
+        {guestCount === 1 && <span>{`${guestCount} guest`}</span>}
+        {guestCount > 1 && <span>{`${guestCount} guests`}</span>}
+        {infants === 1 && <span>{`, ${infants} infant`}</span>}
+        {infants > 1 && <span>{`, ${infants} infants`}</span>}
+
         <ul>
 
 
@@ -124,7 +129,7 @@ class GuestDropdown extends React.Component {
 
 
         </ul>
-      </nav>
+      </button>
     </div>
     );
   }
