@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 // ROUTER METHODS////////////////////////////////////////////////////
 
-app.get('/window/rooms/:roomId', (req, res) => {
+app.get('/api/rooms/:roomId', (req, res) => {
   const { roomId } = req.params;
   findListing(roomId, (err, data) => {
     if (err) {

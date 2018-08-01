@@ -2,7 +2,8 @@
 
 import React from 'react';
 import dataProcessor from '../dataProcessor';
-import GuestComponent from './guestComponent';
+import GuestComponent from './GuestComponent';
+import RenderStars from './RenderStars';
 
 const moment = require('moment');
 
@@ -12,7 +13,7 @@ class Booking extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'init',
+      defaultView: 'closed',
       listing: {
         bookings: [
           [new Date('July 4, 2018'), new Date('July 8, 2018')],
@@ -26,7 +27,6 @@ class Booking extends React.Component {
         reviewStars: 1,
         reviewCount: 1,
       },
-      stars: '',
       today: moment().calendar('LL'),
       stayCost: 0,
       extraGuestCost: 10,
@@ -47,12 +47,11 @@ class Booking extends React.Component {
   // AJAX METHODS////////////////////////////////////////////////////
 
   retreiveData() {
-    const location = `/window${window.location.pathname}`;
+    const location = `/api${window.location.pathname}`;
     dataProcessor.getData(location, (error, response) => {
       if (error) {
-        console.error(error);
+        //insert error handling
       } else {
-        console.log(response.data);
         this.setState(
           { listing: response.data },
           () => { this.updateStayCost(); },
@@ -110,18 +109,15 @@ class Booking extends React.Component {
 
   renderStars() {
     const { listing } = this.state;
-    let result = '';
-    for (let i = 0; i < listing.reviewStars; i += 1) {
-      result += '★';
-    }
-    this.setState({ stars: result });
+    const stars = new Array(listing.reviewStars).fill(null);
+    return stars.map((item, index) => (<RenderStars key={index} />));
   }
 
   // RENDER//////////////////////////////////////////////////////////
 
   render() {
     const {
-      listing, stars, today, stayCost, guestCount,
+      listing, today, stayCost, guestCount,
     } = this.state;
 
     return (
@@ -139,7 +135,10 @@ class Booking extends React.Component {
             </div>
             <div className="reviewSummary">
               <button className="moveToReview" type="button">
-                <span>{`${stars} ${listing.reviewCount} ${listing.maxGuests} ${guestCount}`}</span>
+                <span className="test">
+                  {this.renderStars()}
+                  {` ${listing.reviewCount}`}
+                </span>
               </button>
             </div>
           </div>
@@ -155,7 +154,7 @@ class Booking extends React.Component {
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
-              <span> {"  ---->  "} </span>
+              <span> {".  ---->  ."} </span>
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
@@ -188,3 +187,4 @@ export default Booking;
 /*
 let objectCopy = JSON.parse(JSON.stringify(this.state.object))
 */
+

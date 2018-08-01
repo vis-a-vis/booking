@@ -53,7 +53,10 @@
 }
 
 /*////////// BUTTON DESIGN //////////*/
+
 .moveToReview {
+  display: flex;
+  flex-direction: row;
   padding: 0;
   border: none;
   background: none;
