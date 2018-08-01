@@ -25,7 +25,7 @@ class Booking extends React.Component {
         reviewCount: 1,
       },
       stars: '',
-      today: moment().calendar('L'),
+      today: moment().calendar('LL'),
     };
     this.retreiveData = this.retreiveData.bind(this);
     this.renderStars = this.renderStars.bind(this);
@@ -37,7 +37,9 @@ class Booking extends React.Component {
   }
 
   retreiveData() {
-    dataProcessor.getData(window.location.pathname, (error, response) => {
+    console.log(window.location.pathname);
+    const location = `/window${window.location.pathname}`;
+    dataProcessor.getData(location, (error, response) => {
       if (error) {
         console.error(error);
       } else {
