@@ -26,18 +26,23 @@ class Booking extends React.Component {
       },
       stars: '',
       today: moment().calendar('LL'),
+      stayCost: 0,
+      extraGuestCost: 10,
+      guestCount: 0,
+      nightCount: 0,
     };
     this.retreiveData = this.retreiveData.bind(this);
     this.renderStars = this.renderStars.bind(this);
+    this.incrementGuestCount = this.incrementGuestCount.bind(this);
   }
 
   componentDidMount() {
     this.retreiveData();
+    this.updateStayCost();
     this.renderStars();
   }
 
   retreiveData() {
-    console.log(window.location.pathname);
     const location = `/window${window.location.pathname}`;
     dataProcessor.getData(location, (error, response) => {
       if (error) {
@@ -45,7 +50,8 @@ class Booking extends React.Component {
       } else {
         console.log(response.data);
         this.setState(
-          { listing: response.data });
+          { listing: response.data },
+        );
       }
     });
   }
@@ -58,10 +64,39 @@ class Booking extends React.Component {
       result += '★';
     }
     this.setState({ stars: result });
+
+  }
+
+  // UX METHODS /////////////////////////////////////////////////////
+
+  updateStayCost() {
+    const {
+      listing,
+      extraGuestCost,
+      guestCount,
+      nightCount,
+    } = this.state;
+
+    let tempStayCost = listing.price;
+
+    if (nightCount === 0 && guestCount > 0) {
+      tempStayCost += (extraGuestCost * guestCount);
+    } else {
+      tempStayCost += (extraGuestCost * guestCount);
+      tempStayCost *= nightCount;
+    }
+    this.setState({ stayCost: tempStayCost });
+  }
+
+  incrementGuestCount() {
+    const { guestCount } = this.state;
+    this.setState({ guestCount: guestCount + 1 }, () => {
+      this.updateStayCost();
+    });
   }
 
   render() {
-    const { listing, stars, today } = this.state;
+    const { listing, stars, today, stayCost } = this.state;
     return (
       <div className="outerContainer">
         <div className="innerContainer">
@@ -69,7 +104,7 @@ class Booking extends React.Component {
           <div className="priceSummary">
             <div>
               <span className="priceText">
-                {`$${listing.price} `}
+                {`$${stayCost} `}
               </span>
               <span className="text1">
                 per night
@@ -107,7 +142,10 @@ class Booking extends React.Component {
           </div>
 
           <hr/>
-          <GuestComponent />
+          <GuestComponent
+            maxGuests={listing.maxGuests}
+            incrementGuestCount={this.incrementGuestCount}
+          />
           <hr/>
 
         </div>
@@ -117,3 +155,24 @@ class Booking extends React.Component {
 }
 
 export default Booking;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
