@@ -38,7 +38,7 @@ class Booking extends React.Component {
 
   componentDidMount() {
     this.retreiveData();
-    this.updateStayCost();
+
     this.renderStars();
   }
 
@@ -51,6 +51,7 @@ class Booking extends React.Component {
         console.log(response.data);
         this.setState(
           { listing: response.data },
+          () => { this.updateStayCost(); },
         );
       }
     });
@@ -79,12 +80,22 @@ class Booking extends React.Component {
 
     let tempStayCost = listing.price;
 
+    // FUTURE REFACTOR TO TERNARY EXPRESSION
+    // console.log(tempStayCost);
+    // tempStayCost += guestCount !== 0;
+    // console.log(tempStayCost);
+    // tempStayCost *= nightCount !== 0;
+    // console.log(tempStayCost);
+
     if (nightCount === 0 && guestCount > 0) {
       tempStayCost += (extraGuestCost * guestCount);
-    } else {
+    } else if (nightCount > 0 && guestCount === 0) {
+      tempStayCost *= nightCount;
+    } else if (nightCount > 0 && guestCount > 0) {
       tempStayCost += (extraGuestCost * guestCount);
       tempStayCost *= nightCount;
     }
+
     this.setState({ stayCost: tempStayCost });
   }
 
