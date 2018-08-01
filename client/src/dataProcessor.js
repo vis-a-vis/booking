@@ -7,9 +7,14 @@ const axios = require('axios');
 // AJAX METHODS//////////////////////////////////////////////////////
 
 const getData = (endpoint, callback) => {
+  let splitEndpoint = endpoint.split('/');
+  let listingId = splitEndpoint[2];
   axios({
     method: 'get',
-    url: endpoint,
+    url: '/',
+    params: {
+      listingId: listingId,
+    }
   })
     .then(response => callback(null, response))
     .catch(error => callback(error, null));
