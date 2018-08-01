@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-class guestDropdown extends React.Component {
+class GuestDropdown extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -17,22 +18,34 @@ class guestDropdown extends React.Component {
   //contain 0 to maxGuests
   handlePlusClick(string) {
     const { adults, children, infants } = this.state;
-    if (string === 'adults') {
-      this.setState({ adults: adults + 1 });
-    } else if (string === 'children') {
-      this.setState({ children: children + 1 });
-    } else if (string === 'infants') {
+    const {
+      guestCount, maxGuests, incrementGuestCount, decrementGuestCount,
+    } = this.props;
+
+    if (guestCount < maxGuests && string !== 'infants') {
+      incrementGuestCount();
+      if (string === 'adults') {
+        this.setState({ adults: adults + 1 });
+      } else if (string === 'children') {
+        this.setState({ children: children + 1 });
+      }
+    } else if (string === 'infants' && infants < 9) {
       this.setState({ infants: infants + 1 });
     }
   }
 
   handleMinusClick(string) {
     const { adults, children, infants } = this.state;
-    if (string === 'adults') {
-      this.setState({ adults: adults - 1 });
-    } else if (string === 'children') {
-      this.setState({ children: children - 1 });
-    } else if (string === 'infants') {
+    const { guestCount, maxGuests, decrementGuestCount } = this.props;
+
+    if (guestCount > 0 && string !== 'infants') {
+      decrementGuestCount();
+      if (string === 'adults') {
+        this.setState({ adults: adults - 1 });
+      } else if (string === 'children') {
+        this.setState({ children: children - 1 });
+      }
+    } else if (string === 'infants' && infants > 0) {
       this.setState({ infants: infants - 1 });
     }
   }
@@ -113,4 +126,19 @@ class guestDropdown extends React.Component {
     );
   }
 }
-export default guestDropdown;
+
+GuestDropdown.propTypes = {
+  guestCount: PropTypes.number,
+  maxGuests: PropTypes.number,
+  incrementGuestCount: PropTypes.func,
+  decrementGuestCount: PropTypes.func,
+};
+
+GuestDropdown.defaultProps = {
+  guestCount: 0,
+  maxGuests: 0,
+  incrementGuestCount: null,
+  decrementGuestCount: null,
+};
+
+export default GuestDropdown;
