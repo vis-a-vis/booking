@@ -19,37 +19,40 @@ class GuestDropdown extends React.Component {
   handlePlusClick(string) {
     const { adults, children, infants } = this.state;
     const {
-      guestCount, maxGuests, incrementGuestCount, decrementGuestCount,
+      guestCount, maxGuests, incrementGuestCount,
     } = this.props;
 
-    if (guestCount < maxGuests && string !== 'infants') {
+    if (string === 'adults' && adults < maxGuests && guestCount < maxGuests) {
       incrementGuestCount();
-      if (string === 'adults') {
-        this.setState({ adults: adults + 1 });
-      } else if (string === 'children') {
-        this.setState({ children: children + 1 });
-      }
-    } else if (string === 'infants' && infants < 9) {
+      this.setState({ adults: adults + 1 });
+    }
+    if (string === 'children' && children < maxGuests && guestCount < maxGuests) {
+      incrementGuestCount();
+      this.setState({ children: children + 1 });
+    }
+    if (string === 'infants' && infants < 9) {
       this.setState({ infants: infants + 1 });
     }
   }
 
   handleMinusClick(string) {
     const { adults, children, infants } = this.state;
-    const { guestCount, maxGuests, decrementGuestCount } = this.props;
+    const {
+      guestCount, decrementGuestCount,
+    } = this.props;
 
-    if (guestCount > 0 && string !== 'infants') {
+    if (string === 'adults' && adults > 0 && guestCount > 0) {
       decrementGuestCount();
-      if (string === 'adults') {
-        this.setState({ adults: adults - 1 });
-      } else if (string === 'children') {
-        this.setState({ children: children - 1 });
-      }
-    } else if (string === 'infants' && infants > 0) {
+      this.setState({ adults: adults - 1 });
+    }
+    if (string === 'children' && children > 0 && guestCount > 0) {
+      decrementGuestCount();
+      this.setState({ children: children - 1 });
+    }
+    if (string === 'infants' && infants > 0) {
       this.setState({ infants: infants - 1 });
     }
   }
-
 
   render() {
     const { adults, children, infants } = this.state;
@@ -61,7 +64,7 @@ class GuestDropdown extends React.Component {
 
 
           <li>
-            <a href="adults">Adults</a>
+            <span>Adult</span>
             <button
               type="button"
               onClick={() => this.handleMinusClick('adults')}
@@ -81,7 +84,7 @@ class GuestDropdown extends React.Component {
 
 
           <li>
-            <a href="children">Children</a>
+            <span>Children</span>
             <button
               type="button"
               onClick={() => this.handleMinusClick('children')}
@@ -101,7 +104,7 @@ class GuestDropdown extends React.Component {
 
 
           <li>
-            <a href="infants">Infants</a>
+            <span>Infants</span>
             <button
               type="button"
               onClick={() => this.handleMinusClick('infants')}
