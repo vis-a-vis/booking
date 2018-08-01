@@ -7,10 +7,7 @@ const axios = require('axios');
 // AJAX METHODS//////////////////////////////////////////////////////
 
 const getData = (endpoint, callback) => {
-  axios({
-    method: 'get',
-    url: endpoint,
-  })
+  axios.get(endpoint)
     .then(response => callback(null, response))
     .catch(error => callback(error, null));
 };

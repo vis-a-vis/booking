@@ -12,36 +12,38 @@ class Booking extends React.Component {
     this.state = {
       view: 'init',
       listing: {
-        listingId: 1,
-        price: 90,
-        minStay: 1,
-        lastUpdate: new Date('July 17, 2018'),
         bookings: [
           [new Date('July 4, 2018'), new Date('July 8, 2018')],
-          [new Date('July 19, 2018'), new Date('July 22, 2018')],
-          [new Date('July 29, 2018'), new Date('August 7, 2018')],
         ],
+        listingId: 1,
+        price: 1,
+        cleaningFee: 1,
+        minStay: 1,
+        maxGuests: 1,
+        lastUpdate: new Date('January 1, 2000'),
         reviewStars: 1,
-        reviewCount: 18,
+        reviewCount: 1,
       },
       stars: '',
-      today: moment().calendar('L'),
+      today: moment().calendar('LL'),
     };
     this.retreiveData = this.retreiveData.bind(this);
     this.renderStars = this.renderStars.bind(this);
   }
 
   componentDidMount() {
-    // this.retreiveData();
+    this.retreiveData();
     this.renderStars();
   }
 
   retreiveData() {
-    dataProcessor.getData(window.location.href, (error, response) => {
+    console.log(window.location.pathname);
+    const location = `/window${window.location.pathname}`;
+    dataProcessor.getData(location, (error, response) => {
       if (error) {
         console.error(error);
       } else {
-        // console.log(response.data);
+        console.log(response.data);
         this.setState(
           { listing: response.data });
       }

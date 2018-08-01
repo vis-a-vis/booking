@@ -1,21 +1,26 @@
 // IMPORT/////////////////////////////////////////////////////////////
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const path = require('path');
+const { findListing } = require('../db/index');
+
 const app = express();
 const port = process.env.PORT || 3002;
-const { findListing } = require('../db/index');
 
 // APP METHODS///////////////////////////////////////////////////////
 
 // look up morgan
-app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, '../public')));
+app.use('/rooms/:roomId/', express.static(path.join(__dirname, '../public')));
+app.use(morgan('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
-// GET METHODS///////////////////////////////////////////////////////
+// ROUTER METHODS////////////////////////////////////////////////////
 
-app.get('/rooms/:roomId', (req, res) => {
+app.get('/window/rooms/:roomId', (req, res) => {
   const { roomId } = req.params;
   findListing(roomId, (err, data) => {
     if (err) {
