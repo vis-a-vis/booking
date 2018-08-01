@@ -1,10 +1,12 @@
-// IMPORT/////////////////////////////////////////////////////////////
+// IMPORTS///////////////////////////////////////////////////////////
 
 import React from 'react';
 import dataProcessor from '../dataProcessor';
 import GuestComponent from './guestComponent';
+
 const moment = require('moment');
-// CONSTRUCTION OF BOOKING CLASS////////////////////////////////////////
+
+// CONSTRUCTION OF BOOKING CLASS/////////////////////////////////////
 
 class Booking extends React.Component {
   constructor(props) {
@@ -34,13 +36,15 @@ class Booking extends React.Component {
     this.retreiveData = this.retreiveData.bind(this);
     this.renderStars = this.renderStars.bind(this);
     this.incrementGuestCount = this.incrementGuestCount.bind(this);
+    this.decrementGuestCount = this.decrementGuestCount.bind(this);
   }
 
   componentDidMount() {
     this.retreiveData();
-
     this.renderStars();
   }
+
+  // AJAX METHODS////////////////////////////////////////////////////
 
   retreiveData() {
     const location = `/window${window.location.pathname}`;
@@ -57,15 +61,20 @@ class Booking extends React.Component {
     });
   }
 
-  renderStars() {
-    const { listing } = this.state;
-    let result = '';
-    for (let i = 0; i < listing.reviewStars; i += 1) {
+  // SUBCOMPONENT CLICKHANDLERS//////////////////////////////////////
 
-      result += '★';
-    }
-    this.setState({ stars: result });
+  incrementGuestCount() {
+    const { guestCount } = this.state;
+    this.setState({ guestCount: guestCount + 1 }, () => {
+      this.updateStayCost();
+    });
+  }
 
+  decrementGuestCount() {
+    const { guestCount } = this.state;
+    this.setState({ guestCount: guestCount - 1 }, () => {
+      this.updateStayCost();
+    });
   }
 
   // UX METHODS /////////////////////////////////////////////////////
@@ -99,15 +108,22 @@ class Booking extends React.Component {
     this.setState({ stayCost: tempStayCost });
   }
 
-  incrementGuestCount() {
-    const { guestCount } = this.state;
-    this.setState({ guestCount: guestCount + 1 }, () => {
-      this.updateStayCost();
-    });
+  renderStars() {
+    const { listing } = this.state;
+    let result = '';
+    for (let i = 0; i < listing.reviewStars; i += 1) {
+      result += '★';
+    }
+    this.setState({ stars: result });
   }
 
+  // RENDER//////////////////////////////////////////////////////////
+
   render() {
-    const { listing, stars, today, stayCost } = this.state;
+    const {
+      listing, stars, today, stayCost, guestCount,
+    } = this.state;
+
     return (
       <div className="outerContainer">
         <div className="innerContainer">
@@ -123,7 +139,7 @@ class Booking extends React.Component {
             </div>
             <div className="reviewSummary">
               <button className="moveToReview" type="button">
-                <span>{`${stars} ${listing.reviewCount}`}</span>
+                <span>{`${stars} ${listing.reviewCount} ${listing.maxGuests} ${guestCount}`}</span>
               </button>
             </div>
           </div>
@@ -154,8 +170,10 @@ class Booking extends React.Component {
 
           <hr/>
           <GuestComponent
+            guestCount={guestCount}
             maxGuests={listing.maxGuests}
             incrementGuestCount={this.incrementGuestCount}
+            decrementGuestCount={this.decrementGuestCount}
           />
           <hr/>
 
@@ -167,23 +185,6 @@ class Booking extends React.Component {
 
 export default Booking;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/*
+let objectCopy = JSON.parse(JSON.stringify(this.state.object))
+*/
