@@ -1,4 +1,5 @@
 .outerContainer {
+  padding: 1rem, 1rem, 1rem, 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,24 +28,10 @@
   outline-color: lightgrey;
 }
 
-.bookSummary {
-  width: auto;
-  height: 2rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .guestDropdownMain {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  padding-top: 1rem;
   width: auto;
   height: auto;
-  outline-style: solid;
-  outline-width: 1px;
-  outline-color: grey;
 }
 
 .guestDropdownSub {
@@ -52,17 +39,46 @@
   height: 2rem;
 }
 
+.bookSummary {
+/*position: absolute;
+  z-index: 100;*/
+  margin-top: 24px;
+  width: auto;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*////////// BUTTON DESIGN //////////*/
+
 .moveToReview {
+  display: flex;
+  flex-direction: row;
   padding: 0;
   border: none;
   background: none;
+  cursor: pointer;
 }
 
 .checkInOutBtn {
-  padding: 0;
+  padding: .25rem 2rem;
   border: none;
   background: none;
+  text-align: 'left';
+}
+
+.bookButton {
+  border: none;
+  color: white;
+  background-color: #f44336;
+  padding: .9rem 8rem;
+  text-align: center;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 3px;
 }
 
 /*////////// TEXT DESIGN //////////*/
@@ -71,13 +87,13 @@
   font-size: 1.5em;
 }
 
-.text1 {
+.smallText {
   font-size: .8em;
 }
 
 /*////////// GUEST NAV //////////*/
 
-nav {
+/*nav {
   width: 100%;
   height: 2rem;
   background-color: #fff;
@@ -95,4 +111,21 @@ nav ul {
 nav ul li {
   list-style: none;
 }
+
+nav ul li a {
+}
+
+nav ul li button {
+
+}*/
+
+
+
+
+
+
+
+
+
+
 
