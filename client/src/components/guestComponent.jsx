@@ -41,11 +41,11 @@ class GuestDropdown extends React.Component {
       guestCount, decrementGuestCount,
     } = this.props;
 
-    if (string === 'adults' && adults > 0 && guestCount > 0) {
+    if (string === 'adults' && adults > 1 && guestCount > 1) {
       decrementGuestCount();
       this.setState({ adults: adults - 1 });
     }
-    if (string === 'children' && children > 0 && guestCount > 0) {
+    if (string === 'children' && children > 0 && guestCount > 1) {
       decrementGuestCount();
       this.setState({ children: children - 1 });
     }
@@ -55,19 +55,15 @@ class GuestDropdown extends React.Component {
   }
 
   render() {
-    const { guestCount } = this.props;
+    const { guestCount, maxGuests } = this.props;
     const { adults, children, infants } = this.state;
     return (
     <div>
       <button type="button">
-        {guestCount === 1 && <span>{`${guestCount} guest`}</span>}
-        {guestCount > 1 && <span>{`${guestCount} guests`}</span>}
-        {infants === 1 && <span>{`, ${infants} infant`}</span>}
-        {infants > 1 && <span>{`, ${infants} infants`}</span>}
+        {(guestCount === 1 && <span>{`${guestCount} guest`}</span>) || (guestCount > 1 && <span>{`${guestCount} guests`}</span>)}
+        {(infants === 1 && <span>{`, ${infants} infant`}</span>) || (infants > 1 && <span>{`, ${infants} infants`}</span>)}
 
         <ul>
-
-
           <li>
             <span>Adult</span>
             <button
@@ -126,9 +122,12 @@ class GuestDropdown extends React.Component {
              +
             </button>
           </li>
-
-
         </ul>
+        <span className="smallText">
+          { maxGuests }
+          {(maxGuests === 1 && <span>{` guest `}</span>) || (maxGuests > 1 && <span>{` guests `}</span>)}
+          maximum. Infants don’t count toward the number of guests.
+        </span>
       </button>
     </div>
     );
