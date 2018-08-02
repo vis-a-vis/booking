@@ -7,7 +7,7 @@ const path = require('path');
 const { findListing } = require('../db/index');
 
 const app = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 
 // APP METHODS///////////////////////////////////////////////////////
 
