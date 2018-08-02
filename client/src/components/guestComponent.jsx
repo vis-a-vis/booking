@@ -1,5 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import onClickOutside from 'react-onclickoutside';
+import '../../styling/GuestComponent.css';
+
+// CONSTRUCTION OF GUESTDROPDOWN CLASS///////////////////////////////
 
 class GuestDropdown extends React.Component {
   constructor(props) {
@@ -10,12 +14,32 @@ class GuestDropdown extends React.Component {
       children: 0,
       infants: 0,
     };
+    this.handleDropdownClick = this.handleDropdownClick.bind(this);
+    this.handleDropdownButtonClick = this.handleDropdownButtonClick.bind(this);
+    this.onClickOutside = this.onClickOutside.bind(this);
     this.handlePlusClick = this.handlePlusClick.bind(this);
     this.handleMinusClick = this.handleMinusClick.bind(this);
   }
 
+  // DROPDOWN CLICKHANDLERS//////////////////////////////////////////
 
-  //contain 0 to maxGuests
+  onClickOutside() {
+    this.setState({ open: false }, () => {
+      console.log("the new state for open is: ", this.state.open);
+    });
+  }
+
+  handleDropdownClick() {
+    this.setState({ open: true });
+  }
+
+  handleDropdownButtonClick(e) {
+    e.stopPropagation();
+    this.setState({ open: false });
+  }
+
+  // BUTTON CLICKHANDLERS////////////////////////////////////////////
+
   handlePlusClick(string) {
     const { adults, children, infants } = this.state;
     const {
@@ -54,83 +78,71 @@ class GuestDropdown extends React.Component {
     }
   }
 
+  // RENDER//////////////////////////////////////////////////////////
+
   render() {
     const { guestCount, maxGuests } = this.props;
-    const { adults, children, infants } = this.state;
+    const {
+      open, adults, children, infants,
+    } = this.state;
+
     return (
-    <div className="guestDropdownMain">
-      <span className="smallText">Guests</span>
-      <button type="button">
-        {(guestCount === 1 && <span>{`${guestCount} guest`}</span>) || (guestCount > 1 && <span>{`${guestCount} guests`}</span>)}
-        {(infants === 1 && <span>{`, ${infants} infant`}</span>) || (infants > 1 && <span>{`, ${infants} infants`}</span>)}
+      <div>
+        <div className="guestDropdownMain">
+          <span className="smallText">Guests</span>
 
-        <ul>
-          <li>
-            <span>Adult</span>
-            <button
-              type="button"
-              onClick={() => this.handleMinusClick('adults')}
-            >
-             -
-            </button>
-            <span>
-              { adults }
-            </span>
-            <button
-              type="button"
-              onClick={() => this.handlePlusClick('adults')}
-            >
-             +
-            </button>
-          </li>
+          <div
+            className="dropDownItems"
+            role="button"
+            onClick={this.handleDropdownClick}
+          >
+            <div >
+              {(guestCount === 1 && <span>{`${guestCount} guest`}</span>) || (guestCount > 1 && <span>{`${guestCount} guests`}</span>)}
+              {(infants === 1 && <span>{`, ${infants} infant`}</span>) || (infants > 1 && <span>{`, ${infants} infants`}</span>)}
+            </div>
+
+            <div className={`dropdownItems ${open ? 'show' : 'hide'}`}>
 
 
-          <li>
-            <span>Children</span>
-            <button
-              type="button"
-              onClick={() => this.handleMinusClick('children')}
-            >
-             -
-            </button>
-            <span>
-              { children }
-            </span>
-            <button
-              type="button"
-              onClick={() => this.handlePlusClick('children')}
-            >
-             +
-            </button>
-          </li>
+              <div className="dropdownItem">
+                <span>Adult</span>
+                <div>
+                  <button type="button" onClick={() => this.handleMinusClick('adults')}> - </button>
+                  <span> { adults } </span>
+                  <button type="button" onClick={() => this.handlePlusClick('adults')}> + </button>
+                </div>
+              </div>
 
+              <div className="dropdownItem">
+                <span>Children</span>
+                <div>
+                  <button type="button" onClick={() => this.handleMinusClick('children')}> - </button>
+                  <span> { children } </span>
+                  <button type="button" onClick={() => this.handlePlusClick('children')}> + </button>
+                </div>
+              </div>
 
-          <li>
-            <span>Infants</span>
-            <button
-              type="button"
-              onClick={() => this.handleMinusClick('infants')}
-            >
-             -
-            </button>
-            <span>
-              { infants }
-            </span>
-            <button
-              type="button"
-              onClick={() => this.handlePlusClick('infants')}
-            >
-             +
-            </button>
-          </li>
-        </ul>
-        <span className="smallText">
-          { maxGuests }
-          {(maxGuests === 1 && <span>{` guest `}</span>) || (maxGuests > 1 && <span>{` guests `}</span>)}
-          maximum. Infants don’t count toward the number of guests.
-        </span>
-      </button>
-    </div>
+              <div className="dropdownItem">
+                <span>Infants</span>
+                <div>
+                  <button type="button" onClick={() => this.handleMinusClick('infants')}> - </button>
+                  <span> { infants } </span>
+                  <button type="button" onClick={() => this.handlePlusClick('infants')}> + </button>
+                </div>
+              </div>
+
+              <span className="smallText">
+                { maxGuests }
+                {(maxGuests === 1 && <span>{` guest `}</span>) || (maxGuests > 1 && <span>{` guests `}</span>)}
+                maximum. Infants don’t count toward the number of guests.
+              </span>
+
+              <button type="button" onClick={this.handleDropdownButtonClick}> Close </button>
+
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

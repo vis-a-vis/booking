@@ -4,6 +4,7 @@ import React from 'react';
 import dataProcessor from '../dataProcessor';
 import GuestComponent from './GuestComponent';
 import RenderSVG from './RenderSVG';
+import '../../styling/Booking.css';
 
 const moment = require('moment');
 
