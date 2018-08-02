@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 const db = require('../db/dataGenerator.js');
 const app = express();
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3001;
 
 // APP METHODS///////////////////////////////////////////////////////
 
