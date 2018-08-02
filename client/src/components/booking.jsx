@@ -3,7 +3,7 @@
 import React from 'react';
 import dataProcessor from '../dataProcessor';
 import GuestComponent from './GuestComponent';
-import RenderStars from './RenderStars';
+import RenderSVG from './RenderSVG';
 
 const moment = require('moment');
 
@@ -110,7 +110,7 @@ class Booking extends React.Component {
   renderStars() {
     const { listing } = this.state;
     const stars = new Array(4).fill(null);
-    return stars.map((item, index) => (<RenderStars key={index} />));
+    return stars.map((item, index) => (<RenderSVG.star key={index} />));
   }
 
   // RENDER//////////////////////////////////////////////////////////
@@ -129,7 +129,7 @@ class Booking extends React.Component {
               <span className="priceText">
                 {`$${stayCost} `}
               </span>
-              <span className="text1">
+              <span className="smallText">
                 per night
               </span>
             </div>
@@ -144,37 +144,40 @@ class Booking extends React.Component {
           </div>
 
           <hr/>
-          <hr/>
 
           <div>
-            <span className="text1">
+            <span className="smallText">
               Dates
             </span>
             <div className="datesContainer">
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
-              <span> {".  ---->  ."} </span>
+              <span> {<RenderSVG.rightArrow />} </span>
               <button type="button" className="checkInOutBtn">
                 {today}
               </button>
             </div>
           </div>
 
-          <div className="bookSummary">
-            <button type="button">
-              Request to Book
-            </button>
-          </div>
-
-          <hr/>
           <GuestComponent
             guestCount={guestCount}
             maxGuests={listing.maxGuests}
             incrementGuestCount={this.incrementGuestCount}
             decrementGuestCount={this.decrementGuestCount}
           />
-          <hr/>
+
+          <div className="bookSummary">
+            <button className="bookButton" type="button">
+              Book
+            </button>
+          </div>
+
+          <div style={{ marginTop: '8px', textAlign: 'center'}}>
+            <span className="smallText">
+              You won’t be charged yet
+            </span>
+          </div>
 
         </div>
       </div>

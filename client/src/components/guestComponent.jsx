@@ -58,7 +58,8 @@ class GuestDropdown extends React.Component {
     const { guestCount, maxGuests } = this.props;
     const { adults, children, infants } = this.state;
     return (
-    <div>
+    <div className="guestDropdownMain">
+      <span className="smallText">Guests</span>
       <button type="button">
         {(guestCount === 1 && <span>{`${guestCount} guest`}</span>) || (guestCount > 1 && <span>{`${guestCount} guests`}</span>)}
         {(infants === 1 && <span>{`, ${infants} infant`}</span>) || (infants > 1 && <span>{`, ${infants} infants`}</span>)}
