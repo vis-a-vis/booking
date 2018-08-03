@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import onClickOutside from 'react-onclickoutside';
 import '../../styling/GuestComponent.css';
 
 // CONSTRUCTION OF GUESTDROPDOWN CLASS///////////////////////////////
