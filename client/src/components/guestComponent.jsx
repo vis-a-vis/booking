@@ -6,6 +6,7 @@ import '../../styling/GuestComponent.css';
 
 class GuestDropdown extends React.Component {
   constructor(props) {
+
     super(props);
     this.state = {
       open: false,

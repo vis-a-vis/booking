@@ -11,7 +11,7 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         loader: 'babel-loader',
         query: {
           presets: ['react', 'es2015', 'env'],
@@ -19,7 +19,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        exclude: /node_modules/,
+        exclude: /(node_modules|bower_components)/,
         loader: ['style-loader', 'css-loader'],
       },
     ],
