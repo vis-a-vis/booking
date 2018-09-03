@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test": "jest",
     "testW": "jest --coverage --watchAll",
     "test1": "echo 'Error: no test specified' && exit 1",
-    "seed": "node ./db/dataSeeder.js",
+    "seed": "node --max-old-space-size=1024 ./db/dataSeeder.js",
     "build": "webpack -d --watch",
     "start": "nodemon ./server/server.js",
     "lint": "./node_modules/.bin/eslint"
