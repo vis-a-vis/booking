@@ -1,3 +1,5 @@
+var start = new Date().getTime();
+
 const mongoose = require('mongoose');
 const _ = require('underscore');
 const { listings } = require('./dataGenerator');
@@ -44,14 +46,18 @@ const listingSchema = new mongoose.Schema({
 });
 const Listing = mongoose.model('Listing', listingSchema);
 
-_.once(() => {
+// _.once(() => {
   Listing.insertMany(listings)
     .then(() => {
+      var end = new Date().getTime();
+      var time = end - start;
+      console.log('Execution time: ' + time);
       console.log('listings have been added to db');
     })
     .catch(() => {
       console.log('error adding listings');
     });
-});
+// });
+
 
 module.exports = Listing;
