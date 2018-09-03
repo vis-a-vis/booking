@@ -25,3 +25,5 @@ build/
 dist/
 public/app.js
 
+# Test Coverage Dirs
+__coverage__/
