@@ -107,27 +107,27 @@ class GuestDropdown extends React.Component {
               <div className="dropdownItem">
                 <span>Adult</span>
                 <div>
-                  <button type="button" onClick={() => this.handleMinusClick('adults')}> - </button>
+                  <button className="subtractBtn" type="button" onClick={() => this.handleMinusClick('adults')}> - </button>
                   <span> { adults } </span>
-                  <button type="button" onClick={() => this.handlePlusClick('adults')}> + </button>
+                  <button className="addBtn" type="button" onClick={() => this.handlePlusClick('adults')}> + </button>
                 </div>
               </div>
 
               <div className="dropdownItem">
                 <span>Children</span>
                 <div>
-                  <button type="button" onClick={() => this.handleMinusClick('children')}> - </button>
+                  <button className="subtractBtn" type="button" onClick={() => this.handleMinusClick('children')}> - </button>
                   <span> { children } </span>
-                  <button type="button" onClick={() => this.handlePlusClick('children')}> + </button>
+                  <button className="addBtn" type="button" onClick={() => this.handlePlusClick('children')}> + </button>
                 </div>
               </div>
 
               <div className="dropdownItem">
                 <span>Infants</span>
                 <div>
-                  <button type="button" onClick={() => this.handleMinusClick('infants')}> - </button>
+                  <button className="subtractBtn" type="button" onClick={() => this.handleMinusClick('infants')}> - </button>
                   <span> { infants } </span>
-                  <button type="button" onClick={() => this.handlePlusClick('infants')}> + </button>
+                  <button className="addBtn" type="button" onClick={() => this.handlePlusClick('infants')}> + </button>
                 </div>
               </div>
 
